@@ -3,28 +3,28 @@ class Corrida:
         self.id_corrida = id_corrida
         self.motorista = motorista
         self.passageiro = passageiro
-        self.distancia = distancia # em quilômetros
+        self.distancia = distancia  # em quilômetros
         self.status = "solicitada"
-        self.valor = 0.0 
+        self.valor = 0.0
 
     def iniciar_corrida(self):
-        if not self.motorista.diposnivel:
+        if not self.motorista.disponivel:
             raise Exception("Motorista indisponível")
         self.status = "em andamento"
         self.motorista.atualizar_status(False)
 
-    def finalizer_corrida(self):
+    def finalizar_corrida(self):
         if self.status != "em andamento":
-            raise Exception("A corrida ainda naõ foi inciada")
+            raise Exception("A corrida ainda não foi iniciada")
         self.status = "finalizada"
-        self.valor = self.calular_valor()
+        self.valor = self.calcular_valor()
         self.motorista.atualizar_status(True)
 
     def calcular_valor(self):
-        taxa_base = 5.0 # Taxa fixa inicial 
-        valor_por_km = 2.5 # valor por quilômetro
+        taxa_base = 5.0  # Taxa fixa inicial
+        valor_por_km = 2.5  # valor por quilômetro
         return taxa_base + (valor_por_km * self.distancia)
 
     def __repr__(self):
-        return (f"Corrida(id={self.id_corrida}, motorista={self.motorista.nome}, "
-                f"passageiro={self.passageiro.nome}, status={self.status}, valor={self.valor})")  
+        return (f"Corrida(id = {self.id_corrida}, motorista = {self.motorista.nome}, "
+                f"passageiro = {self.passageiro.nome}, status = {self.status}, valor = {self.valor})")

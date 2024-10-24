@@ -10,3 +10,7 @@ class abstractFactory(ABC):
     @abstractmethod
     def criar_passageiro(self, nome, local_partida, destino):
         pass
+
+    @abstractmethod
+    def criar_corrida(self, driver, passenger, distance):
+        pass
