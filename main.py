@@ -37,3 +37,7 @@ if corrida is not None:
         print(f"Erro na corrida: {e}")
 else:
     print("Erro ao criar a corrida")
+
+    """
+    teste 
+    """
