@@ -2,6 +2,7 @@
 O padrão de design Abstract Factory foi escolhido para este projeto por sua capacidade de fornecer uma interface para a criação de famílias de objetos relacionados, sem especificar suas classes concretas. Esse padrão é particularmente adequado para um projeto como o simulador de corridas da Uber, pois há diferentes componentes (motoristas, passageiros e corridas) que podem ser criados de forma independente, mas que devem funcionar em conjunto para compor o sistema.
 
 ## Motivos para a escolha do Abstract Factory:
+
 ### Escalabilidade e Flexibilidade:
 
 O projeto pode crescer e incluir novas entidades (como diferentes tipos de motoristas ou passageiros) sem que seja necessário modificar o código existente. Basta adicionar novas fábricas que herdam da interface abstrata e implementam a criação dos novos tipos de objetos.
@@ -10,22 +11,25 @@ Desacoplamento:
 
 Com o Abstract Factory, as classes que consomem os objetos criados (por exemplo, a lógica de gerenciamento de corridas) não precisam saber quais classes específicas estão sendo instanciadas. Isso reduz o acoplamento entre os componentes do sistema, facilitando a manutenção.
 Isso é importante em sistemas grandes como o Uber, onde diferentes módulos podem ser atualizados ou substituídos independentemente.
-Organização e Manutenibilidade:
+
+###Organização e Manutenibilidade:
 
 O padrão ajuda a organizar o código de maneira clara, separando as responsabilidades de criação de objetos da lógica de negócios. Isso facilita a manutenção e legibilidade do código, além de promover uma arquitetura mais modular.
 As fábricas centralizam a criação dos objetos, mantendo o código de criação em um lugar específico, ao invés de espalhá-lo pela aplicação.
-Facilidade para Testes:
+
+###Facilidade para Testes:
 
 O Abstract Factory torna os testes unitários mais simples, pois podemos criar facilmente objetos falsos ou mockados para testes ao invés de instanciar diretamente classes concretas.
 Com o uso de fábricas, podemos simular diferentes comportamentos ou cenários com pouco esforço, substituindo implementações de fábricas em diferentes contextos de testes.
-Aplicação no Projeto
+
+###Aplicação no Projeto
 No contexto deste simulador de corridas, o Abstract Factory foi aplicado da seguinte forma:
 
-DriverFactory: É responsável por criar os motoristas (objetos da classe Driver), garantindo que os detalhes sobre os motoristas sejam encapsulados e criados de maneira consistente.
+**DriverFactory:** É responsável por criar os motoristas (objetos da classe Driver), garantindo que os detalhes sobre os motoristas sejam encapsulados e criados de maneira consistente.
 
-PassengerFactory: Cuida da criação dos passageiros (objetos da classe Passenger), que, assim como os motoristas, podem ter variações em uma implementação futura.
+**PassengerFactory:** Cuida da criação dos passageiros (objetos da classe Passenger), que, assim como os motoristas, podem ter variações em uma implementação futura.
 
-RideFactory: Lida com a criação de corridas (objetos da classe Corrida), encapsulando a lógica que relaciona motoristas e passageiros para formar uma corrida.
+**RideFactory:** Lida com a criação de corridas (objetos da classe Corrida), encapsulando a lógica que relaciona motoristas e passageiros para formar uma corrida.
 
 Essa abordagem mantém o código altamente extensível e facilita a adaptação do sistema caso haja necessidade de incluir novas funcionalidades ou entidades no futuro.
 
@@ -36,13 +40,13 @@ A escolha do padrão Abstract Factory neste projeto possibilitou a criação de 
 No projeto, adotamos o Padrão Proxy na criação de um novo passageiro para adicionar uma camada extra de controle e flexibilidade no processo de criação de objetos. A principal motivação para a escolha desse padrão foi a necessidade de desacoplar a lógica de criação do passageiro da lógica principal do controlador e permitir a inserção de funcionalidades adicionais de forma transparente.
 
 ## Benefícios do Proxy:
-Encapsulamento de Lógica Extra: O Proxy permite que adicionemos funcionalidades como validação, autenticação, logging ou auditoria no momento da criação do passageiro, sem modificar o código da classe original (PassengerService). Isso mantém a classe PassengerService focada na responsabilidade de criar e gerenciar passageiros, enquanto o Proxy lida com aspectos transversais, como validações ou logs.
+**Encapsulamento de Lógica Extra:** O Proxy permite que adicionemos funcionalidades como validação, autenticação, logging ou auditoria no momento da criação do passageiro, sem modificar o código da classe original (PassengerService). Isso mantém a classe PassengerService focada na responsabilidade de criar e gerenciar passageiros, enquanto o Proxy lida com aspectos transversais, como validações ou logs.
 
-Centralização de Regras de Negócio: Caso precisemos adicionar regras de negócios adicionais (como verificar se o passageiro já existe, validar o formato dos dados ou registrar eventos em logs), podemos implementá-las facilmente dentro do Proxy. Isso evita a duplicação de código e facilita a manutenção futura.
+**Centralização de Regras de Negócio:** Caso precisemos adicionar regras de negócios adicionais (como verificar se o passageiro já existe, validar o formato dos dados ou registrar eventos em logs), podemos implementá-las facilmente dentro do Proxy. Isso evita a duplicação de código e facilita a manutenção futura.
 
-Desacoplamento: Ao utilizar o Proxy, a camada de controle (no caso, o controlador de criação do passageiro) fica desacoplada da lógica de criação efetiva do passageiro. Isso facilita a alteração do comportamento da criação de passageiros sem impactar diretamente o fluxo de controle da aplicação, promovendo maior flexibilidade e facilidade de teste.
+**Desacoplamento:** Ao utilizar o Proxy, a camada de controle (no caso, o controlador de criação do passageiro) fica desacoplada da lógica de criação efetiva do passageiro. Isso facilita a alteração do comportamento da criação de passageiros sem impactar diretamente o fluxo de controle da aplicação, promovendo maior flexibilidade e facilidade de teste.
 
-Extensibilidade: O padrão Proxy permite que, futuramente, outras funcionalidades possam ser inseridas na criação de passageiros sem precisar modificar o código do controlador ou da classe PassengerService. Por exemplo, podemos introduzir verificações de segurança ou integrações com outros sistemas, sem alterar a estrutura de código já existente.
+**Extensibilidade:** O padrão Proxy permite que, futuramente, outras funcionalidades possam ser inseridas na criação de passageiros sem precisar modificar o código do controlador ou da classe PassengerService. Por exemplo, podemos introduzir verificações de segurança ou integrações com outros sistemas, sem alterar a estrutura de código já existente.
 
 ## Como Funciona
 Quando a criação de um passageiro é requisitada, o controlador utiliza o PassengerProxy para interceptar a criação. O Proxy valida e processa a solicitação, e só então delega a criação real do passageiro para o PassengerService. O uso do Proxy também facilita o controle de erros, pois é possível tratar exceções ou problemas antes de finalizar a criação do passageiro.
@@ -54,7 +58,7 @@ Em resumo, o uso do Proxy traz flexibilidade e controle, permitindo que possamos
 
 
 
-Como rodar o projeto
+##Como rodar o projeto
 
     1. Clone o repositório:
         git clone https://github.com/PedroSbardelotto/Uber_simulator.git
