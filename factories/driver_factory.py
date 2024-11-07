@@ -1,10 +1,10 @@
-from models.driver import Motorista
+from models.driver import Driver
 from factories.abstract_factory import abstractFactory
 
 
 class DriverFactory(abstractFactory):
-    def criar_motorista(self, nome, veiculo, disponivel):
-        return Motorista(nome=nome, veiculo=veiculo, disponivel=True)
+    def criar_motorista(self, name, vehicle, available):
+        return Driver(name=name, vehicle=vehicle, available=True)
 
     def criar_passageiro(self, nome, local_paetida, destino):
         raise NotImplementedError("DrivenFactory não cria passageiros.")

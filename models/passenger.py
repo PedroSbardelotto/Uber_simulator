@@ -1,10 +1,11 @@
-class Passageiro:
-    def __init__(self, nome, destino):
-        self.nome = nome
-        self.destino = destino
-
-    def atualizar_destinos(self, novo_destino):
-        self.destino = novo_destino
+class Passenger:
+    def __init__(self, name, destination, departure_location):
+        self.name = name
+        self.destination = destination
+        self.departure_location = departure_location
+         
+    def update_destinations(self, new_destination):
+        self.destination = new_destination
 
     def __repr__(self):
-        return f"Passageiro(nome = {self.nome}, partida = {self.local_partida}, destino = {self.destino})"
+        return f"Passenger(name = {self.name}, departure = {self.departure_location}, destination = {self.destination})"

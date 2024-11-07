@@ -1,8 +1,16 @@
-class Motorista:
-    def __init__(self, nome, veiculo, disponivel=True):
-        self.nome = nome
-        self.veiculo = veiculo
-        self.disponivel = disponivel
+class Driver:
+    def __init__(self, name, vehicle, available=True):
+        self.name = name
+        self.vehicle = vehicle
+        self.available = available
 
-    def atualizar_status(self, disponivel):
-        self.disponivel = disponivel
+    def update_status(self,available):
+        self.available = available
+
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "vehicle": self.vehicle,
+            "available": self.available,
+        }
+    
