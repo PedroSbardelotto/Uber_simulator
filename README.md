@@ -12,17 +12,17 @@ Desacoplamento:
 Com o Abstract Factory, as classes que consomem os objetos criados (por exemplo, a lógica de gerenciamento de corridas) não precisam saber quais classes específicas estão sendo instanciadas. Isso reduz o acoplamento entre os componentes do sistema, facilitando a manutenção.
 Isso é importante em sistemas grandes como o Uber, onde diferentes módulos podem ser atualizados ou substituídos independentemente.
 
-###Organização e Manutenibilidade:
+### Organização e Manutenibilidade:
 
 O padrão ajuda a organizar o código de maneira clara, separando as responsabilidades de criação de objetos da lógica de negócios. Isso facilita a manutenção e legibilidade do código, além de promover uma arquitetura mais modular.
 As fábricas centralizam a criação dos objetos, mantendo o código de criação em um lugar específico, ao invés de espalhá-lo pela aplicação.
 
-###Facilidade para Testes:
+### Facilidade para Testes:
 
 O Abstract Factory torna os testes unitários mais simples, pois podemos criar facilmente objetos falsos ou mockados para testes ao invés de instanciar diretamente classes concretas.
 Com o uso de fábricas, podemos simular diferentes comportamentos ou cenários com pouco esforço, substituindo implementações de fábricas em diferentes contextos de testes.
 
-###Aplicação no Projeto
+### Aplicação no Projeto
 No contexto deste simulador de corridas, o Abstract Factory foi aplicado da seguinte forma:
 
 **DriverFactory:** É responsável por criar os motoristas (objetos da classe Driver), garantindo que os detalhes sobre os motoristas sejam encapsulados e criados de maneira consistente.
@@ -58,7 +58,7 @@ Em resumo, o uso do Proxy traz flexibilidade e controle, permitindo que possamos
 
 
 
-##Como rodar o projeto
+## Como rodar o projeto
 
     1. Clone o repositório:
         git clone https://github.com/PedroSbardelotto/Uber_simulator.git
