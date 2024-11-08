@@ -54,6 +54,9 @@ Quando a criação de um passageiro é requisitada, o controlador utiliza o Pass
 Em resumo, o uso do Proxy traz flexibilidade e controle, permitindo que possamos adicionar funcionalidades extras à criação do passageiro de maneira escalável e organizada, sem afetar o código já existente e garantindo que as responsabilidades estejam bem divididas entre as camadas da aplicação.
 
 
+### Criadores:
+Pedro Sbardelotto. 
+Jonatas Davi Nascimento da Silva.
 
 
 
