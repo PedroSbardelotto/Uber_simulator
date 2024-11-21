@@ -53,6 +53,9 @@ Quando a criação de um passageiro é requisitada, o controlador utiliza o Pass
 
 Em resumo, o uso do Proxy traz flexibilidade e controle, permitindo que possamos adicionar funcionalidades extras à criação do passageiro de maneira escalável e organizada, sem afetar o código já existente e garantindo que as responsabilidades estejam bem divididas entre as camadas da aplicação.
 
+ ### Por que usar o padrão Template Method?
+
+O padrão Template Method é uma abordagem poderosa para definir o esqueleto de um algoritmo em uma classe base abstrata, permitindo que subclasses personalizem partes específicas desse algoritmo sem alterar sua estrutura geral. Ele promove a reutilização de código ao encapsular os passos comuns do processo, reduzindo duplicação e facilitando a manutenção. Além disso, o Template Method segue o princípio de projeto "Open/Closed" (aberto para extensão, fechado para modificação), pois permite que novas funcionalidades sejam adicionadas através de subclasses sem impactar o código existente. No contexto deste projeto, ele é usado para criar corridas de diferentes tipos (econômica e luxo), garantindo que todas sigam um fluxo comum de criação, mas permitindo que regras específicas sejam aplicadas para cada tipo. Isso torna o código mais organizado, flexível e fácil de expandir.
 
 
 
