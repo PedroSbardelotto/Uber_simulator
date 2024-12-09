@@ -57,8 +57,48 @@ Em resumo, o uso do Proxy traz flexibilidade e controle, permitindo que possamos
 
 O padrão Template Method é uma abordagem poderosa para definir o esqueleto de um algoritmo em uma classe base abstrata, permitindo que subclasses personalizem partes específicas desse algoritmo sem alterar sua estrutura geral. Ele promove a reutilização de código ao encapsular os passos comuns do processo, reduzindo duplicação e facilitando a manutenção. Além disso, o Template Method segue o princípio de projeto "Open/Closed" (aberto para extensão, fechado para modificação), pois permite que novas funcionalidades sejam adicionadas através de subclasses sem impactar o código existente. No contexto deste projeto, ele é usado para criar corridas de diferentes tipos (econômica e luxo), garantindo que todas sigam um fluxo comum de criação, mas permitindo que regras específicas sejam aplicadas para cada tipo. Isso torna o código mais organizado, flexível e fácil de expandir.
 
+
+### Implementação do Template Method
+A classe base RideTemplate define o fluxo geral para criar uma corrida, incluindo:
+
+Validação de dados (motorista, passageiro e distância).
+
+Cálculo do preço da corrida.
+
+Instanciação de uma corrida específica.
+
+Subclasses, como RideEconomica e RideLuxo, especializam esse fluxo, implementando os métodos abstratos para atender às regras de cada tipo de corrida.
+
+## Benefícios do Template Method
+Consistência no Fluxo de Lógica
+O padrão garante que todas as subclasses sigam o mesmo fluxo de execução definido na classe base. Isso evita duplicação de código e mantém o sistema coeso.
+
+## Flexibilidade para Personalização
+Cada tipo de corrida pode implementar suas regras específicas sem alterar o fluxo geral. Por exemplo, o cálculo de preço e a validação podem ser adaptados para corridas econômicas ou de luxo.
+
+## Reutilização de Código
+A lógica comum é centralizada na classe base, reduzindo a repetição e facilitando a manutenção.
+
+## Separação de Responsabilidades
+A classe base cuida do algoritmo geral, enquanto as subclasses lidam com detalhes específicos. Isso melhora a legibilidade e organiza melhor o código.
+
+### Pontos de Atenção (Contras)
+Complexidade Inicial
+O uso do Template Method pode parecer excessivo para cenários simples, como um sistema com poucas categorias. A criação da estrutura abstrata pode não justificar o esforço.
+
+Dificuldade de Modificação no Fluxo Geral
+Se o fluxo definido na classe base precisar mudar significativamente, todas as subclasses terão que ser revisadas, o que pode gerar um impacto maior na manutenção.
+
+Sobrecarga para Pequenas Alterações
+Para ajustes menores que afetam apenas algumas partes do fluxo, pode ser necessário criar novos métodos abstratos ou refatorar o algoritmo geral, o que pode ser trabalhoso.
+
+##Considerações Finais
+A escolha do Template Method para este sistema se justifica pela necessidade de padronizar o fluxo de criação de corridas, garantindo consistência e permitindo a expansão do sistema com novas categorias no futuro. Apesar de haver uma sobrecarga inicial na implementação, os benefícios de organização e reutilização superam os contras em sistemas que tendem a crescer e se especializar.
+
+
 ### Criadores:
 Pedro Sbardelotto. 
+
 Jonatas Davi Nascimento da Silva.
 
 
